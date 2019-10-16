@@ -17,3 +17,6 @@ Neural networks can be treated as regression models. It closely resembles the lo
 as neurons. 
 
 
+Linear Regression Model using Greatest Descent method:
+
+
