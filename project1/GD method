@@ -1,0 +1,36 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+x = np.loadtxt('ex2x.csv')
+y = np.loadtxt('ex2y.csv')
+
+print (x)
+print (y)
+
+#1000 times of training
+#rate is the speed of convergence, aka how fast it find the best parameters
+
+m_current=0
+b_current=0
+time=1000
+rate=0.0001
+n = float(len(y))
+
+for i in range(time):
+        y_current = (m_current * x) + b_current
+        cost = sum([data ** 2 for data in (y - y_current)]) / n
+        m_gradient = -(2 / n) * sum(x * (y - y_current))
+        b_gradient = -(2 / n) * sum(y - y_current)
+
+        m_current = m_current - (rate * m_gradient)
+        b_current = b_current - (rate * b_gradient)
+
+print (m_current, b_current)
+
+y_predict=m_current*x+b_current;
+
+
+plt.scatter(x,y_predict)
+plt.scatter(x,y, color = "b", marker = "p", s = 100)
+plt.show()
